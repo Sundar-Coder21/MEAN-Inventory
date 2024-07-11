@@ -1,0 +1,181 @@
+<!-- <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Shipping Information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Company" formControlName="company">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="First name" formControlName="firstName">
+                        @if (addressForm.controls['firstName'].hasError('required')) {
+                        <mat-error>First name is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Last name" formControlName="lastName">
+                        @if (addressForm.controls['lastName'].hasError('required')) {
+                        <mat-error>Last name is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Address" formControlName="address"></textarea>
+                        @if (addressForm.controls['address'].hasError('required')) {
+                        <mat-error>Address is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @if (hasUnitNumber) {
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+                    </mat-form-field>
+                    } @else {
+                    <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+                        + Add C/O, Apt, Suite, Unit
+                    </button>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="City" formControlName="city">
+                        @if (addressForm.controls['city'].hasError('required')) {
+                        <mat-error>City is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-select placeholder="State" formControlName="state">
+                            @for (state of states; track state) {
+                            <mat-option [value]="state.abbreviation">{{ state.name }}</mat-option>
+                            }
+                        </mat-select>
+                        @if (addressForm.controls['state'].hasError('required')) {
+                        <mat-error>State is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number"
+                            formControlName="postalCode">
+                        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-radio-group formControlName="shipping">
+                        <mat-radio-button value="free">Free Shipping</mat-radio-button>
+                        <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+                        <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</form> -->
+
+<form [formGroup]="EmployeeForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="EmployeeForm">
+        <mat-card-header>
+            <mat-card-title>Inventory Information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="form">
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Name *" formControlName="name" required>
+                        <!-- @if (addressForm.controls['state'].hasError('required')) { -->
+                        @if(EmployeeForm.get('name')?.invalid && EmployeeForm.get('name')?.touched){
+                        <mat-error>
+                            Name is <strong>required</strong>
+                        </mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Description *" formControlName="description"
+                            required></textarea>
+                        @if(EmployeeForm.get('description')?.invalid && EmployeeForm.get('description')?.touched){
+                        <mat-error>
+                            Description is <strong>required</strong>
+                        </mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Quantity *" formControlName="quantity" type="number" required>
+                        @if(EmployeeForm.get('quantity')?.invalid && EmployeeForm.get('quantity')?.touched){
+                        <mat-error>
+                            Quantity is <strong>required</strong>
+                        </mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Unit Price *" formControlName="unitPrice" type="number" required>
+                        @if(EmployeeForm.get('unitPrice')?.invalid && EmployeeForm.get('unitPrice')?.touched){
+                        <mat-error>
+                            Unit Price is <strong>required</strong>
+                        </mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Category" formControlName="category">
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Location" formControlName="location">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Supplier" formControlName="supplier">
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="bnt-grp">
+            <a mat-raised-button color="warn" [routerLink]="['/admin', 'inventory']">Cancel</a>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -1,0 +1,58 @@
+<div class="container">
+    <mat-card class="login-card">
+        <div class="login-card-content">
+            <div class="login-form-container">
+                <img src="../../../assets/logo.svg" alt="">
+                <h2 class="login-title">{{ 'Login to your account' | titlecase}}</h2>
+                <h4 class="login-subtitle">Welcome back! Please enter your details.</h4>
+                <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="login-form">
+                    <div class="form-group">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" placeholder="Enter your email">
+                            @if (loginForm.get('email')?.hasError('required') || loginForm.get('email')?.touched) {
+                            <mat-error>
+                                Email is required
+                            </mat-error>
+                            }
+
+                            @if (loginForm.get('email')?.hasError('email')) {
+                            <mat-error>
+                                Please enter a valid email address
+                            </mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="password" type="{{ hidePassword ? 'password' : 'text' }}"
+                                placeholder="********">
+                            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()"
+                                [attr.aria-label]="hidePassword ? 'Hide password' : 'Show password'">
+                                <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                            </button>
+                            @if (loginForm.get('password')?.hasError('required') || loginForm.get('password')?.touched)
+                            {
+                            <mat-error>
+                                Password is required
+                            </mat-error>
+                            }
+                            @if (loginForm.get('password')?.hasError('minlength')) {
+                            <mat-error>
+                                Password should be at least 8 characters long
+                            </mat-error>
+                            }
+                            @if (loginForm.get('password')?.hasError('maxlength')) {
+                            <mat-error>
+                                Password cannot exceed 20 characters
+                            </mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    <button mat-raised-button type="submit" class="authentication-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </mat-card>
+</div>

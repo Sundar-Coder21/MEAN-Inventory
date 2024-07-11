@@ -1,0 +1,78 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <img src="../../assets/sidebarLogo.svg" alt="brandname" srcset="" class="brandname">
+    </mat-toolbar>
+    <mat-nav-list>
+      @for(item of menuItems; track item){
+      <a mat-list-item [routerLink]="'/'+item.path" routerLinkActive="list-item-active">
+        <mat-icon class="icons">{{item.icon}}</mat-icon>
+        <span matLine> {{item.text | titlecase}}</span>
+      </a>
+      }
+      <div class="btmnav">
+        <a mat-list-item [routerLink]="'/'">
+          <mat-icon class="icons">settings</mat-icon>
+          <span matLine> {{"setting" | titlecase}}</span>
+        </a>
+        <a mat-list-item (click)="logout()">
+          <mat-icon class="icons">logout</mat-icon>
+          <span matLine> {{"Logout" | titlecase}}</span>
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>KANBAN</span>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item>View profile</button>
+        <button mat-menu-item  (click)="logout()">Logout</button>
+        <!-- <button mat-menu-item (click)="logout()">Logout</button> -->
+      </mat-menu>
+      <div class="spacer"></div>
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <img src="../../assets/Avatar.svg" alt="Profile Image" class="profile-image">
+      </button>
+      }
+      @else {
+      <span>
+        <!-- {{"Dashboard" | titlecase}} -->
+      </span>
+      <div class="spacer"></div>
+      <!-- <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item>View profile</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu> -->
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>View profile</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <img src="../../assets/Avatar.svg" alt="Profile Image" class="profile-image">
+      </button>
+      }
+    </mat-toolbar>
+
+    <div class="container">
+      <!-- <mat-card-content class="dashboard-card-content"> -->
+      <router-outlet></router-outlet>
+      <!-- </mat-card-content> -->
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

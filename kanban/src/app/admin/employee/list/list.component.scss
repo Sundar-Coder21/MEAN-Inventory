@@ -1,0 +1,71 @@
+.card {
+    padding: 1.5rem;
+    min-height: 80vh;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-grp {
+    display: flex;
+    gap: .8rem;
+}
+
+.full-width-table {
+    width: 100%;
+}
+
+.mat-elevation-z8 {
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+// .filter{
+//     padding-left: .8rem;
+// }
+
+
+tr.example:hover {
+    background-color: whitesmoke;
+    color: cadetblue;
+}
+
+.table-shadow {
+    box-shadow: none;
+}
+
+.table-scrollbar {
+    max-height: 325px;
+    /* Set the maximum height for the container */
+    width: 100%;
+    overflow-y: auto;
+    /* Enable vertical scrollbar */
+}
+
+.table-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+// td,
+// th {
+//     text-align: center !important;
+//     vertical-align: middle !important;
+// }
+
+// :host ::ng-deep .mat-sort-header-container {
+//     justify-content: center !important;
+// }
+
+
+

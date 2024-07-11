@@ -1,7 +1,4 @@
-Inventory Management System
-Overview
-Inventory Management System
-Overview
+
 The Inventory Management System is a web application designed to manage inventory items, track stock levels, and generate reports. It uses the MEAN stack (MongoDB, Express.js, Angular, Node.js) for a modern and scalable architecture, combined with MySQL for relational data management. This project is ideal for managing warehouse inventory, product stock, and generating insightful reports.
 
 Features
